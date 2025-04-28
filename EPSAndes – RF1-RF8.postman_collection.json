@@ -1,0 +1,291 @@
+{
+	"info": {
+		"_postman_id": "d93e4849-7ad9-4afe-b70e-dadd343acb6e",
+		"name": "EPSAndes – RF1-RF8",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42754543",
+		"_collection_link": "https://olimpiadas-4411.postman.co/workspace/Olimpiadas~0191ffa5-9e6b-43ec-a62d-ab16635c6d39/collection/42754543-d93e4849-7ad9-4afe-b70e-dadd343acb6e?action=share&source=collection_link&creator=42754543"
+	},
+	"item": [
+		{
+			"name": "RF1 – Registrar IPS",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nombre\": \"Clínica Central\",\n  \"direccion\": \"Calle 123 #45-67\",\n  \"nit\": \"900123456\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/ips",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"ips"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RF2 – Registrar Servicio de Salud",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"descripcion\": \"Consulta Médico General\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/servicios",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"servicios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RF3 – Asignar Servicio a IPS",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/ips/{{ipsId}}/servicios/{{servicioId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"ips",
+						"{{ipsId}}",
+						"servicios",
+						"{{servicioId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RF4 – Registrar Médico",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nombre\": \"Dra. Ana Pérez\",\n  \"registro\": \"RM-12345\",\n  \"tipoDocumento\": \"CC\",\n  \"numeroDocumento\": \"123456789\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/medicos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"medicos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RF5 – Registrar Afiliado",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nombre\": \"Carlos Gómez\",\n  \"fechaNacimiento\": \"1990-05-15\",\n  \"tipoAfiliacion\": \"CONTRIBUTIVO\",\n  \"tipoDocumento\": \"CC\",\n  \"numeroDocumento\": \"987654321\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/afiliados",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"afiliados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RF6 – Registrar Orden de Servicio",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/ordenes?idAfiliado={{afiliadoId}}&idMedico={{medicoId}}&idServicio={{servicioId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"ordenes"
+					],
+					"query": [
+						{
+							"key": "idAfiliado",
+							"value": "{{afiliadoId}}"
+						},
+						{
+							"key": "idMedico",
+							"value": "{{medicoId}}"
+						},
+						{
+							"key": "idServicio",
+							"value": "{{servicioId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RF7-1 – Consultar Disponibilidad (4 semanas)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/agenda/disponibilidad?idServicio={{servicioId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"agenda",
+						"disponibilidad"
+					],
+					"query": [
+						{
+							"key": "idServicio",
+							"value": "{{servicioId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RF7-2 – Agendar Servicio (crear Cita)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/citas?idAgenda={{agendaId}}&idOrden={{ordenId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"citas"
+					],
+					"query": [
+						{
+							"key": "idAgenda",
+							"value": "{{agendaId}}"
+						},
+						{
+							"key": "idOrden",
+							"value": "{{ordenId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RF8 – Registrar Prestación del Servicio",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseUrl}}/prestaciones?idCita={{citaId}}&dx=Z00.0&resultados=Consulta sin hallazgos anormales",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"prestaciones"
+					],
+					"query": [
+						{
+							"key": "idCita",
+							"value": "{{citaId}}"
+						},
+						{
+							"key": "dx",
+							"value": "Z00.0"
+						},
+						{
+							"key": "resultados",
+							"value": "Consulta sin hallazgos anormales"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080"
+		},
+		{
+			"key": "ipsId",
+			"value": "1"
+		},
+		{
+			"key": "servicioId",
+			"value": "1"
+		},
+		{
+			"key": "medicoId",
+			"value": "1"
+		},
+		{
+			"key": "afiliadoId",
+			"value": "1"
+		},
+		{
+			"key": "ordenId",
+			"value": "1"
+		},
+		{
+			"key": "agendaId",
+			"value": "1"
+		},
+		{
+			"key": "citaId",
+			"value": "1"
+		}
+	]
+}

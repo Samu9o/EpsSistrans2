@@ -1,0 +1,58 @@
+{
+	"info": {
+		"_postman_id": "66fdb567-a4ad-47e4-94ab-89b9a4101bc7",
+		"name": "RF9",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29228723"
+	},
+	"item": [
+		{
+			"name": "Agendar serializable OK",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/epsandes/agendas_serializable/16/2024-03-01/08-15-00/asignar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"epsandes",
+						"agendas_serializable",
+						"16",
+						"2024-03-01",
+						"08-15-00",
+						"asignar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agendar no OK",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/epsandes/agendas/16/2024-03-01/08-15-00/asignar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"epsandes",
+						"agendas",
+						"16",
+						"2024-03-01",
+						"08-15-00",
+						"asignar"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

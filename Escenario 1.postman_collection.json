@@ -1,0 +1,62 @@
+{
+	"info": {
+		"_postman_id": "f8caac16-7627-4b41-86f1-8ef62d184499",
+		"name": "Escenario 1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29228723"
+	},
+	"item": [
+		{
+			"name": "t0: tx1 -> Get Agendas Serializable",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/epsandes/agendas_serializable",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"epsandes",
+						"agendas_serializable"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "t15: tx2 -> Reserva OK",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/epsandes/agendas_serializable/1/2024-03-01/13-15-00/asignar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"epsandes",
+						"agendas_serializable",
+						"1",
+						"2024-03-01",
+						"13-15-00",
+						"asignar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Agendas no serializable",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
